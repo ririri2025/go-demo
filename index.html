@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>囲碁デモ</title>
+  <style>
+    table { border-collapse: collapse; margin: 20px auto; }
+    td {
+      width: 30px; height: 30px;
+      border: 1px solid black;
+      text-align: center; vertical-align: middle;
+      font-size: 24px; cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2 style="text-align:center;">簡単な囲碁体験</h2>
+  <table id="board"></table>
+
+  <script>
+    const board = document.getElementById('board');
+    const size = 9;
+    let current = '●';
+
+    for (let i = 0; i < size; i++) {
+      const row = board.insertRow();
+      for (let j = 0; j < size; j++) {
+        const cell = row.insertCell();
+        cell.addEventListener('click', function () {
+          if (cell.textContent === '') {
+            cell.textContent = current;
+            current = current === '●' ? '○' : '●';
+          }
+        });
+      }
+    }
+  </script>
+</body>
+</html>
